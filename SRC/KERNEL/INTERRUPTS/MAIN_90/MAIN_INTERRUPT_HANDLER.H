@@ -28,6 +28,8 @@ static void mainInterruptHandler(){
     } else if(functionNum == 2) {// ah = 2 setCursorPos dh,dl cursor pos
         asm volatile("pop ax\n");
         fSetCursorPos();
+    } else {
+        asm volatile("pop ax\n");
     }
     asm volatile("add esp, 0x10\n");
     asm volatile("iret");
