@@ -1,7 +1,2 @@
-static void fSetVideoMode(){
-    asm volatile(
-        "mov ah, 0\n"
-        "int 0x10\n"
-    );
-    return;
-};
+#include "./FUNCTIONS/VIDEO/VIDEO_S.H"
+#include "./FUNCTIONS/CURSOR/CURSOR_S.H"

@@ -6,7 +6,7 @@ asm volatile(
 static void recalibration(){
     asm volatile(
         "cli\n"
-        "xor ax, ax\n"
+        "mov ah, 0\n"
         "mov ds, ax\n"
         "mov es, ax\n"
         "mov ss, ax\n"
@@ -17,7 +17,7 @@ static void recalibration(){
 static DAPS kernel_DAPS = {
     .paksize = 16, // packet size
     .reserved = 0, // reserved
-    .numsectors = 4, // number of sectors
+    .numsectors = 6, // number of sectors
     .reserved2 = 0, // reserved
     .offset = 0x0500, // offset
     .segment = 0x0000, // segment

@@ -2,7 +2,7 @@ files:
 point = 1
 
 kernel:
-size = 2
+size = 3
 db 0,0,size,point,"kernel"
 point = point + size
 times(16-($-kernel)) db 0

@@ -1,3 +1,3 @@
 #!/bin/bash
-gcc-11 -masm=intel -std=gnu++2b -static -fpermissive -Os -nostdlib -m32 -march=i686 -fno-stack-protector -no-pie -fno-pie -ffreestanding -o ../SRC/BOOT/BOOT.Bin -Wl,-static,--nmagic,--script=./C/LD/BOOT_LINK.LD ../SRC/BOOT/BOOT.C
-gcc-11 -masm=intel -std=gnu++2b -static -fpermissive -Os -nostdlib -m32 -march=i686 -fno-stack-protector -no-pie -fno-pie -ffreestanding -o ../SRC/KERNEL/KERNEL.Bin -Wl,-static,--nmagic,--script=./C/LD/KERNEL_LINK.LD ../SRC/KERNEL/KERNEL.C
+gcc-11 -masm=intel -std=gnu++11 -static -fpermissive -O -nostdlib -m32 -march=i686 -fno-stack-protector -no-pie -fno-pie -ffreestanding -o ../SRC/BOOT/BOOT.Bin -Wl,-static,--nmagic,--script=./C/LD/BOOT_LINK.LD ../SRC/BOOT/BOOT.C
+gcc-11 -masm=intel -std=gnu++11 -static -fpermissive -O -nostdlib -m32 -march=i686 -fno-stack-protector -no-pie -fno-pie -ffreestanding -o ../SRC/KERNEL/KERNEL.Bin -Wl,-static,--nmagic,--script=./C/LD/KERNEL_LINK.LD ../SRC/KERNEL/KERNEL.C
