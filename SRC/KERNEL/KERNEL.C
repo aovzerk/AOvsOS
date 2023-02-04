@@ -2,7 +2,7 @@ asm volatile(
     ".code16gcc\n"
     "jmp main\n"
 );
-#include "../INCLUDES/VIDEO_SERV.H"
+#include "../../INCLUDES/VIDEO_SERV.H"
 #include "INTERRUPTS/MAIN_90/MAIN_INTERRUPT_HANDLER.H"
 #include "FUNCTIONS/ETC.H"
 static void printChar(u_char8 c){

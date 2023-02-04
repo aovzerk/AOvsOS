@@ -2,6 +2,6 @@
 
 ./SCRIPTS/COMPILE_C.SH
 ./SCRIPTS/COMPILE_FASM.SH
-rm ../**/*.Bin
+rm ../SRC/**/*.Bin
 rm ../BUILD/FASM/**/*.Bin
 ./SCRIPTS/START.SH
