@@ -2,16 +2,6 @@
 #ifndef CURSOR_F
 #define CURSOR_F
 __attribute__ ((cdecl))
-void printChar1(u_char8 c){
-    asm volatile(
-        "pusha\n"
-        "mov ah, 0x03\n"
-        "mov al, %0\n"
-        "int 0x90\n"
-        "popa\n"
-    ::"r"(c));
-}
-__attribute__ ((cdecl))
 CURSOR_POS GetCursorPos(){
     static CURSOR_POS pos = {0, 0};
     asm volatile("pusha\n");
