@@ -1,6 +1,7 @@
 #include "../../../INCLUDES/TYPES.H"
 #ifndef ETC
 #define ETC
+__attribute__ ((cdecl))
 static void setInterruptHandler(u_char8 num, void (*handler)(u_char8 *f)){
     asm volatile("pusha");
     asm volatile(

@@ -1,8 +1,9 @@
 #include "../../../../../../INCLUDES/CURSOR/CURSOR_T.H"
 #ifndef CURSOR_S
 #define CURSOR_S
+__attribute__ ((cdecl))
 static CURSOR_POS fGetCursorPos(){
-    CURSOR_POS pos = {0, 0};
+    static CURSOR_POS pos = {0, 0};
     asm volatile("pusha\n");
     asm volatile(
         "mov ah, 3\n"
