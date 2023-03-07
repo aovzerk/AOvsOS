@@ -1,4 +1,6 @@
 #include "../../../INCLUDES/TYPES.H"
+#ifndef DISK
+#define DISK
 struct DAPS
 {
     u_char8 paksize;
@@ -23,3 +25,4 @@ static void load_daps(DAPS* daps){
     asm volatile("popa");
     return;
 }
+#endif

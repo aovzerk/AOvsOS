@@ -1,5 +1,7 @@
 #include "../../../INCLUDES/TYPES.H"
-static void setInterruptHandler(u_char8 num, void (*handler)(void)){
+#ifndef ETC
+#define ETC
+static void setInterruptHandler(u_char8 num, void (*handler)(u_char8 *f)){
     asm volatile("pusha");
     asm volatile(
         "push 0000\n"
@@ -21,3 +23,4 @@ static void setInterruptHandler(u_char8 num, void (*handler)(void)){
     asm volatile("popa");
     return;
 };
+#endif

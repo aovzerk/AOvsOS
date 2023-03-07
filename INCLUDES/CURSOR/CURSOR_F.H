@@ -1,4 +1,6 @@
 #include "CURSOR_T.H"
+#ifndef CURSOR_F
+#define CURSOR_F
 static CURSOR_POS GetCursorPos(){
     static CURSOR_POS pos = {0, 0};
     asm volatile("pusha\n");
@@ -27,3 +29,4 @@ static void SetCursorPos(CURSOR_POS pos){
     );
     asm volatile("popa\n");
 }
+#endif

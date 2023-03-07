@@ -1,4 +1,6 @@
 #include "../TYPES.H"
+#ifndef VIDEO_SERV
+#define VIDEO_SERV
 static void setVideoMode(u_char8 mode){
     asm volatile("pusha");
     asm volatile(
@@ -9,3 +11,4 @@ static void setVideoMode(u_char8 mode){
     asm volatile("popa");
     return;
 };
+#endif

@@ -3,18 +3,10 @@ asm volatile(
     "jmp main\n"
 );
 #include "../../INCLUDES/VIDEO/VIDEO_SERV.H"
+#include "../../INCLUDES/VIDEO/PRINT_S.H"
 #include "../../INCLUDES/CURSOR/CURSOR_F.H"
 #include "INTERRUPTS/MAIN_90/MAIN_INTERRUPT_HANDLER.H"
 #include "FUNCTIONS/ETC.H"
-static void printChar(u_char8 c){
-    asm volatile("pusha\n");
-    asm volatile(
-        "mov ah, 0x0e\n"
-        "mov al, %0\n"
-        "int 0x10\n"
-    ::"r"(c));
-    asm volatile("popa\n");
-}
 
 void main(){
     static u_char8 num = 0x90;

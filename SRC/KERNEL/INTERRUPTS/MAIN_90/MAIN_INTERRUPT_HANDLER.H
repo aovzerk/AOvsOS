@@ -1,9 +1,12 @@
 #include "INTERRUPT_90_FUNC.H"
 #include "../../../../INCLUDES/TYPES.H"
-static u_char8 functionNum = 11;
+#ifndef MAIN_INTERRUPT_HANDLER
+#define MAIN_INTERRUPT_HANDLER
+static u_char8 functionNum = 101; // non-existent function
 static CURSOR_POS pos = {0, 0};
 
-static void mainInterruptHandler(){
+__attribute__ ((interrupt))
+static void mainInterruptHandler(u_char8 *f){
     
     asm volatile("push ax\n");
     asm volatile(
@@ -31,6 +34,5 @@ static void mainInterruptHandler(){
     } else {
         asm volatile("pop ax\n");
     }
-    asm volatile("add esp, 0x10\n");
-    asm volatile("iret");
 }
+#endif
