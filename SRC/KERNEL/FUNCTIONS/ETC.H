@@ -2,7 +2,7 @@
 #ifndef ETC
 #define ETC
 __attribute__ ((cdecl))
-static void setInterruptHandler(u_char8 num, void (*handler)(u_char8 *f)){
+static void setInterruptHandler(u_char8 num, void (*handler)(interrupt_frame *f)){
     asm volatile("pusha");
     asm volatile(
         "push 0000\n"

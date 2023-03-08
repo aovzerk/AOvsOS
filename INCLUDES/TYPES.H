@@ -1,3 +1,5 @@
+#ifndef TYPES
+#define TYPES
 #define u_int16 unsigned short int
 #define u_char8 unsigned char
 #define u_long_int unsigned long int
@@ -18,3 +20,5 @@
 #define Green 2
 #define Blue 1
 #define Black 0
+struct interrupt_frame;
+#endif

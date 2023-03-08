@@ -1,6 +1,6 @@
 #include "../TYPES.H"
-#ifndef VIDEO_SERV
-#define VIDEO_SERV
+#ifndef VIDEO_F
+#define VIDEO_F
 __attribute__ ((cdecl))
 void setVideoMode(u_char8 mode){
     asm volatile(

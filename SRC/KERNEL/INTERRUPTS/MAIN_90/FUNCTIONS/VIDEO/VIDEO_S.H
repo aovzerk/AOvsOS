@@ -6,10 +6,12 @@
 #define VIDEO_S
 __attribute__ ((cdecl))
 static void fSetVideoMode(){
+    asm volatile("pusha\n");
     asm volatile(
         "mov ah, 0\n"
         "int 0x10\n"
     );
+    asm volatile("popa\n");
     return;
 };
 __attribute__ ((cdecl))

@@ -1,8 +1,8 @@
 #include "../TYPES.H"
 #include "../STRINGS/STRING_LEN.H"
 #include "../CURSOR/CURSOR_F.H"
-#ifndef PRINT_S
-#define PRINT_S
+#ifndef PRINT_F
+#define PRINT_F
 __attribute__ ((cdecl))
 void printChar(u_char8 c){
     asm volatile(
@@ -14,7 +14,7 @@ void printChar(u_char8 c){
     ::"r"(c));
 }
 __attribute__ ((cdecl))
-static void printString(u_char8 *s, u_char8 color){
+void printString(u_char8 *s, u_char8 color){
     u_char8 len = stringLen(s);
     static CURSOR_POS pos = {0, 0};
     pos = GetCursorPos();
