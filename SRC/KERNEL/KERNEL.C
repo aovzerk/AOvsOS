@@ -10,28 +10,18 @@ asm volatile(
 #include "../../INCLUDES/STRINGS/STRING_CMP.H"
 #include "INTERRUPTS/MAIN_90/MAIN_INTERRUPT_HANDLER.H"
 #include "FUNCTIONS/ETC.H"
+#include "./FUNCTIONS/DISK.H"
+static u_char8 boot_disk = 0x80;
 
 void main(){
     u_char8 num = 0x90;
-    u_char8 mode = 0x03;
-    static u_char8 helloStr[] = "Hello World! =)";
-    static CURSOR_POS pos = {0, 0};
     setInterruptHandler(num, mainInterruptHandler);
+    u_char8 mode = 0x03;
     setVideoMode(mode);
-    printChar(1 + 0x30);
-    for(u_char8 i = 0; i < 1; i++){
-        printString(helloStr, Green);
-    }
-    pos.y = 1;
-    SetCursorPos(pos);
-    static u_char8 myString[10];
-    for(u_char8 i = 0; i < 10; i ++){
-        myString[i] = getKey();
-        printChar(myString[i]);
-    }
-    myString[10] = 0;
-    pos.y = 2;
-    SetCursorPos(pos);
-    printString(myString, Red);
+    static u_char8 helloStr[] = "AOvsOS is loading...\n\r";
+    printString(helloStr, Green);
+    static file tablefiles[64];
+    load_table_files(tablefiles, boot_disk);
+    printString(tablefiles[0].name, Red);
     asm volatile("jmp $\n");
 }

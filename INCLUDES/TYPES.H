@@ -21,4 +21,12 @@
 #define Blue 1
 #define Black 0
 struct interrupt_frame;
+struct file
+{
+    u_char8 type;
+    u_char8 empty;
+    u_char8 num_clusters;
+    u_char8 cluster;
+    u_char8 name[12];
+};
 #endif

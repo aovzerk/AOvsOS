@@ -6,7 +6,7 @@ asm volatile(
 static void recalibration(){
     asm volatile(
         "cli\n"
-        "mov ah, 0\n"
+        "xor ax,ax\n"
         "mov ds, ax\n"
         "mov es, ax\n"
         "mov ss, ax\n"
@@ -14,10 +14,11 @@ static void recalibration(){
         "sti\n"
     );
 }
+static u_char8 disk_num = 0x00;
 static DAPS kernel_DAPS = {
     .paksize = 16, // packet size
     .reserved = 0, // reserved
-    .numsectors = 6, // number of sectors
+    .numsectors = 10, // number of sectors
     .reserved2 = 0, // reserved
     .offset = 0x0500, // offset
     .segment = 0x0000, // segment
@@ -25,7 +26,13 @@ static DAPS kernel_DAPS = {
 };
 void main(void){
     recalibration();
-    load_daps(&kernel_DAPS);
+    asm volatile(
+        "mov %0, dl\n"
+        : "=m"(disk_num)
+        :
+        :
+    );
+    load_daps(&kernel_DAPS, disk_num);
     asm volatile("jmp 0x0:0x0500\n");
     asm volatile("jmp $\n");
 }
