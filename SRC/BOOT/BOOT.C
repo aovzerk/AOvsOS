@@ -25,14 +25,15 @@ static DAPS kernel_DAPS = {
     .first_sector = 3 // first sector
 };
 void main(void){
-    recalibration();
     asm volatile(
         "mov %0, dl\n"
         : "=m"(disk_num)
         :
         :
     );
-    load_daps(&kernel_DAPS, disk_num);
+    recalibration();
+    
+    load_daps(&kernel_DAPS, &disk_num);
     asm volatile("jmp 0x0:0x0500\n");
     asm volatile("jmp $\n");
 }

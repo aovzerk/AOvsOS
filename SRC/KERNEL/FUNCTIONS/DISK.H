@@ -12,7 +12,7 @@ struct DAPS
     u_long_int64 first_sector;
 };
 __attribute__ ((cdecl))
-static void load_daps(DAPS* daps, u_char8 disk){
+static void load_daps(DAPS* daps, u_char8 *disk){
     asm volatile("pusha");
     asm volatile(
         "push cs\n"
@@ -21,14 +21,14 @@ static void load_daps(DAPS* daps, u_char8 disk){
         "mov ah, 0x42\n"
         "int 0x13\n"
         :
-        : "S"(daps), "r"(disk)
+        : "S"(daps), "r"(*disk)
         :
     );
     asm volatile("popa");
     return;
 }
 __attribute__ ((cdecl))
-static void load_table_files(file *files, u_char8 disk){
+static void load_table_files(file *files, u_char8 *disk){
     static DAPS tableFilesDUPS = {
         .paksize = 16, // packet size
         .reserved = 0, // reserved

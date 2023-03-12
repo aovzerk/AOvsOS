@@ -11,17 +11,23 @@ asm volatile(
 #include "INTERRUPTS/MAIN_90/MAIN_INTERRUPT_HANDLER.H"
 #include "FUNCTIONS/ETC.H"
 #include "./FUNCTIONS/DISK.H"
-static u_char8 boot_disk = 0x80;
-
+static u_char8 boot_disk = 0x00;
+static u_char8 helloStr[] = "AOvsOS is loading...\n\r";
 void main(){
+    asm volatile(
+        "mov %0, dl\n"
+        :"=m"(boot_disk)
+        :
+        :
+    );
     u_char8 num = 0x90;
     setInterruptHandler(num, mainInterruptHandler);
     u_char8 mode = 0x03;
     setVideoMode(mode);
-    static u_char8 helloStr[] = "AOvsOS is loading...\n\r";
+    
     printString(helloStr, Green);
     static file tablefiles[64];
-    load_table_files(tablefiles, boot_disk);
+    load_table_files(tablefiles, &boot_disk);
     printString(tablefiles[0].name, Red);
     asm volatile("jmp $\n");
 }
